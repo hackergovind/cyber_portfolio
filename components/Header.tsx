@@ -7,8 +7,8 @@ const statusDot = <span aria-hidden="true" className="inline-block size-2 rounde
 function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
-        <a href="#top" className="flex items-center gap-2 font-bold tracking-tight">
+      <nav aria-label="Main" className="mx-auto flex h-14 max-w-5xl items-center justify-between gap-2 px-4">
+        <a href="#top" className="flex shrink-0 items-center gap-2 font-bold tracking-tight">
           {statusDot}
           <span>
             {PROFILE.handle}
@@ -28,6 +28,9 @@ function Header() {
                 )}
               >
                 {l.label}
+                <span aria-hidden="true" className="ml-1 font-mono text-xs opacity-60">
+                  {l.terminal.replace("~", "")}
+                </span>
               </a>
             </li>
           ))}
@@ -36,8 +39,22 @@ function Header() {
           href="#contact"
           className="rounded-md bg-primary px-3 py-2 text-sm font-bold text-primary-foreground hover:opacity-90 sm:hidden"
         >
-          ~/contact
+          Hire me
         </a>
+      </nav>
+      <nav aria-label="Sections" className="border-t border-border sm:hidden">
+        <ul className="mx-auto flex max-w-5xl items-center gap-1 overflow-x-auto px-4 py-2">
+          {NAV_LINKS.map((l) => (
+            <li key={l.id} className="shrink-0">
+              <a
+                href={`#${l.id}`}
+                className="block rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   );

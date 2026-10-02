@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
+import CopyEmailButton from "@/components/CopyEmailButton";
 import { EXPERIENCE, PROFILE, PROJECTS, SKILLS } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -27,28 +28,28 @@ export default function HomePage() {
       <main id="main">
         <Hero />
 
-        <Section id="about" title="~/about">
+        <Section id="about" title="About" terminal="~/about">
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-card p-5">
-              <h3 className="mb-2 font-bold text-primary">$ cat about.txt</h3>
+              <h3 className="mb-2 font-bold text-primary">What I do</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 I break web apps (ethically) and then build them back stronger. My work sits at the
                 intersection of offensive security and modern frontend — React/Next.js, TypeScript,
-                Tailwind v4, with WCAG AA and Core Web Vitals baked in from the start.
+                Tailwind v4, with accessibility and performance baked in from the start.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-card p-5">
-              <h3 className="mb-2 font-bold text-primary">$ uptime --focus</h3>
+              <h3 className="mb-2 font-bold text-primary">Focus</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>→ Responsible disclosure & bug bounty recon</li>
                 <li>→ Accessible component systems (shadcn patterns)</li>
-                <li>→ Performance budgets: &lt; 3s on 3G, 90+ Lighthouse</li>
+                <li>→ Fast, responsive sites — measured before claimed</li>
               </ul>
             </div>
           </div>
         </Section>
 
-        <Section id="skills" title="~/skills">
+        <Section id="skills" title="Skills" terminal="~/skills">
           <div className="grid gap-4 sm:grid-cols-3">
             {SKILLS.map((g) => (
               <div key={g.category} className="rounded-xl border border-border bg-card p-5">
@@ -68,15 +69,22 @@ export default function HomePage() {
           </div>
         </Section>
 
-        <Section id="projects" title="~/projects">
+        <Section id="projects" title="Projects" terminal="~/projects">
           <div className="grid gap-4 sm:grid-cols-2">
-            {PROJECTS.map((p) => (
+            {PROJECTS.filter((p) => p.draft !== true).map((p) => (
               <ProjectCard key={p.id} project={p} />
             ))}
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            More experiments are drafts until they have a repo + demo. Full walkthroughs:{" "}
+            <a href="/writeups" className="underline hover:text-primary">
+              /writeups
+            </a>
+            .
+          </p>
         </Section>
 
-        <Section id="experience" title="~/experience">
+        <Section id="experience" title="Experience" terminal="~/experience">
           <ol className="space-y-4">
             {EXPERIENCE.map((e) => (
               <li key={e.role} className="rounded-xl border border-border bg-card p-5">
@@ -96,8 +104,12 @@ export default function HomePage() {
           </ol>
         </Section>
 
-        <Section id="contact" title="~/contact">
+        <Section id="contact" title="Contact" terminal="~/contact">
           <div className="rounded-xl border border-border bg-card p-6">
+            <p className="mb-2 inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-semibold text-secondary-foreground">
+              <span aria-hidden="true" className="inline-block size-2 rounded-full bg-primary" />
+              Open for internships & freelance · India (IST) · Remote
+            </p>
             <p className="mb-4 text-sm text-muted-foreground">
               Open for internships, freelance, and security collabs. Fastest reply by email.
             </p>
@@ -108,6 +120,17 @@ export default function HomePage() {
                   className="inline-flex min-h-[44px] items-center rounded-md bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground hover:opacity-90"
                 >
                   {PROFILE.email}
+                </a>
+              </li>
+              <li>
+                <CopyEmailButton email={PROFILE.email} />
+              </li>
+              <li>
+                <a
+                  href="/resume.pdf"
+                  className="inline-flex min-h-[44px] items-center rounded-md border border-border bg-secondary px-5 py-2.5 text-sm font-semibold hover:border-primary"
+                >
+                  Resume (PDF)
                 </a>
               </li>
               <li>
@@ -137,7 +160,7 @@ export default function HomePage() {
 
       <footer className="mx-auto max-w-5xl px-4 py-8 text-center text-xs text-muted-foreground">
         <p>
-          © {new Date().getFullYear()} {PROFILE.handle} · Built with Next.js + Tailwind v4 · WCAG AA ·{" "}
+          © {new Date().getFullYear()} {PROFILE.handle} · Built with Next.js + Tailwind v4 ·{" "}
           <a href="#top" className="underline hover:text-primary">
             Back to top ↑
           </a>

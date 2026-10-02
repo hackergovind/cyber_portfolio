@@ -36,9 +36,9 @@ function Hero() {
         </ul>
         <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4" aria-label="Highlights">
           {[
-            ["Uptime", "99.9% secure"],
-            ["LCP", "< 2.5s"],
-            ["A11y", "WCAG AA"],
+            ["Location", "India · Remote"],
+            ["Availability", "Open for internships"],
+            ["Response", "Fastest by email"],
             ["Focus", "OffSec + UI"],
           ].map(([k, v]) => (
             <div key={k} className="rounded-lg border border-border bg-card p-3">

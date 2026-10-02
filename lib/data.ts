@@ -2,9 +2,13 @@ export interface Project {
   readonly id: string;
   readonly title: string;
   readonly description: string;
+  readonly outcome: string;
   readonly tags: readonly string[];
+  /** Live demo / details URL. Never "#": drafts carry no link. */
   readonly link: string;
-  readonly stars?: number;
+  readonly github: string;
+  readonly demo?: string;
+  readonly draft?: boolean;
 }
 
 export interface SkillGroup {
@@ -25,7 +29,7 @@ export const PROFILE = {
   name: "Govind",
   handle: "hackergovind",
   role: "Cybersecurity Researcher & Frontend Developer",
-  tagline: "$ whoami — building secure, fast, accessible web experiences",
+  tagline: "I break web apps (ethically), then build them back stronger — security researcher who ships accessible frontends",
   location: "India · Remote",
   email: "hello@hackergovind.dev",
   github: "https://github.com/hackergovind",
@@ -42,30 +46,40 @@ export const PROJECTS: readonly Project[] = [
   {
     id: "cyber-portfolio",
     title: "cyber_portfolio",
-    description: "This site — Next.js 15 + Tailwind v4, WCAG AA, 90+ Lighthouse, deployed on Vercel.",
+    description:
+      "This site — Next.js 15 + Tailwind v4 single-page portfolio with skip-link, landmarks, and 44px touch targets.",
+    outcome: "Outcome: builds clean, deploys on Vercel, no dead links.",
     tags: ["Next.js", "TypeScript", "Tailwind"],
-    link: "#",
-  },
-  {
-    id: "vuln-scanner",
-    title: "web-vuln-scanner",
-    description: "Lightweight recon + header / TLS / OWASP checks dashboard with exportable reports.",
-    tags: ["Python", "Security", "React"],
-    link: "#",
+    link: "https://github.com/hackergovind/cyber_portfolio",
+    github: "https://github.com/hackergovind/cyber_portfolio",
   },
   {
     id: "phish-guard",
     title: "phish-guard",
     description: "Phishing URL analyser with heuristics + threat-intel lookup, privacy-first client-side checks.",
+    outcome: "Outcome: paste-a-URL demo planned; currently code + writeup.",
     tags: ["TypeScript", "Next.js", "API"],
-    link: "#",
+    link: "https://github.com/hackergovind/phish-guard",
+    github: "https://github.com/hackergovind/phish-guard",
+  },
+  {
+    id: "vuln-scanner",
+    title: "web-vuln-scanner",
+    description: "Lightweight recon + header / TLS / OWASP checks dashboard with exportable reports.",
+    outcome: "Draft — repo on request until README + abuse guardrails land.",
+    tags: ["Python", "Security", "React"],
+    link: "",
+    github: "",
+    draft: true,
   },
   {
     id: "ctf-writeups",
     title: "ctf-writeups",
     description: "Documented CTF solutions — privilege escalation, web exploitation, forensics walkthroughs.",
+    outcome: "See /writeups for published walkthroughs.",
     tags: ["Writeups", "Linux", "Web"],
-    link: "#",
+    link: "/writeups",
+    github: "https://github.com/hackergovind",
   },
 ] as const;
 
@@ -86,16 +100,16 @@ export const EXPERIENCE: readonly Experience[] = [
     period: "2023 — Present",
     points: [
       "Shipped responsive, accessible React/Next.js sites",
-      "Core Web Vitals: LCP < 2.5s, CLS < 0.1 on portfolio builds",
+      "Measured performance and accessibility before claiming them",
       "Design systems with Tailwind + shadcn patterns",
     ],
   },
 ] as const;
 
-export const NAV_LINKS: readonly { readonly id: SectionId; readonly label: string }[] = [
-  { id: "about", label: "~/about" },
-  { id: "skills", label: "~/skills" },
-  { id: "projects", label: "~/projects" },
-  { id: "experience", label: "~/experience" },
-  { id: "contact", label: "~/contact" },
+export const NAV_LINKS: readonly { readonly id: SectionId; readonly label: string; readonly terminal: string }[] = [
+  { id: "about", label: "About", terminal: "~/about" },
+  { id: "skills", label: "Skills", terminal: "~/skills" },
+  { id: "projects", label: "Projects", terminal: "~/projects" },
+  { id: "experience", label: "Experience", terminal: "~/experience" },
+  { id: "contact", label: "Contact", terminal: "~/contact" },
 ] as const;

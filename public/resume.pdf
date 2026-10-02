@@ -1,0 +1,38 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 420 >>
+stream
+BT /F1 24 Tf 72 720 Td (Govind - hackergovind) Tj ET
+BT /F1 12 Tf 72 690 Td (Cybersecurity Researcher & Frontend Developer) Tj ET
+BT /F1 12 Tf 72 670 Td (India - Remote - hello@hackergovind.dev) Tj ET
+BT /F1 12 Tf 72 640 Td (Open for internships and freelance.) Tj ET
+BT /F1 12 Tf 72 615 Td (Security: recon, OWASP Top 10, responsible disclosure, CTF writeups.) Tj ET
+BT /F1 12 Tf 72 595 Td (Frontend: React, Next.js, TypeScript, Tailwind CSS, accessible UI.) Tj ET
+BT /F1 12 Tf 72 570 Td (See https://github.com/hackergovind and /writeups for proof.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f
+0000000009 00000 n
+0000000056 00000 n
+0000000111 00000 n
+0000000262 00000 n
+0000000770 00000 n
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+840
+%%EOF
